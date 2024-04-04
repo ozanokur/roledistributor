@@ -94,3 +94,10 @@ roleDistribution:
 
 Each role is a LeaderLatch. If there are 10 roles, that means that there are 10 leader elections. When an instance is elected as the leader, it basically means that that instance has that role. When an instance goes down, it relinquishes its leadership and a new leader is elected, meaning the role will be redistributed.
 Each instance continuously checks if there is an imbalance in the distribution of roles, by checking how many roles they have compared to how many instances there are. If they have too many roles, they will relinquish their leadership (of the role) and that role will be redistributed to the remaining instances.
+
+## TODO
+- How graceful are the shutdowns?
+- What happens when there is a connection failure with zookeeper, while the instance is still up? Does it completely lose its functionality?
+- Are there edge cases with instance additions/removals? How well do they work?
+- Are there edge cases with role additions/removals? How well do they work?
+- Is it properly synchronized and made thread-safe?
